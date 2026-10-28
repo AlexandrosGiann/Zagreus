@@ -1,0 +1,8 @@
+# private keys of the local HTTPS certificate authority (serve.js --lan)
+.cert/
+# Rust build output (the built .wasm files live in wasm/)
+wasm-src/target/
+# upstream clones used during development
+_repos/
+# local tool settings of the Claude Code session
+.claude/

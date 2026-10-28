@@ -1,0 +1,9 @@
+# keep LF in the repository and in checkouts (build.sh, model text files)
+* text=auto eol=lf
+*.bin binary
+*.cact binary
+*.wasm binary
+*.f32 binary
+*.wav binary
+*.jpg binary
+*.png binary

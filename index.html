@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="el" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ζαγρεύς</title>
+  <meta name="description" content="Ζαγρεύς — φωνητικός βοηθός που τρέχει εξ ολοκλήρου στον browser." />
+  <meta name="theme-color" content="#0f0c15" />
+  <link rel="icon" href="assets/zagreus.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/zagreus.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img class="brand-mark" src="assets/zagreus.svg" alt="" width="34" height="34" />
+        <div class="brand-text">
+          <div class="brand-name">Ζαγρεύς</div>
+          <div class="brand-tag" data-i18n="tagline"></div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="modelsBtn" class="pill" type="button" aria-haspopup="dialog">
+          <span class="pill-dots" id="modelDots"></span>
+          <span id="modelsCount"></span>
+        </button>
+        <button id="langBtn" class="icon-btn" type="button" data-i18n-title="language">EN</button>
+        <button id="themeBtn" class="icon-btn" type="button" data-i18n-title="theme" aria-label="Theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" type="button" data-i18n-title="settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="chat" class="chat" aria-live="polite">
+      <section id="hero" class="hero">
+        <div class="hero-orb" aria-hidden="true"><div class="orb small"><span></span></div></div>
+        <h1 data-i18n="heroTitle"></h1>
+        <p data-i18n="heroText"></p>
+        <div id="suggestions" class="chips"></div>
+      </section>
+      <div id="messages" class="messages"></div>
+    </main>
+
+    <footer class="composer-wrap">
+      <div id="statusLine" class="status-line" hidden></div>
+      <form id="composer" class="composer" autocomplete="off">
+        <button id="imageBtn" class="tool-btn" type="button" data-i18n-title="image">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </button>
+        <textarea id="input" rows="1" maxlength="600" data-i18n-placeholder="placeholder"></textarea>
+        <button id="micBtn" class="tool-btn" type="button" data-i18n-title="mic">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+        </button>
+        <button id="sendBtn" class="send-btn" type="submit" data-i18n-title="send" aria-label="Send">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+      <button id="callBtn" class="call-fab" type="button" data-i18n-title="call" aria-label="Call">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      </button>
+    </footer>
+  </div>
+
+  <!-- Models & settings drawer -->
+  <div id="drawer" class="drawer" hidden>
+    <div class="drawer-backdrop" data-close></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <h2 id="drawerTitle" data-i18n="models"></h2>
+        <button class="icon-btn" type="button" data-close data-i18n-title="close">×</button>
+      </div>
+      <div class="drawer-body">
+        <div class="section-head">
+          <h3 data-i18n="models"></h3>
+          <button id="loadAllBtn" class="btn small" type="button" data-i18n="loadAll"></button>
+        </div>
+        <div id="modelList" class="model-list"></div>
+
+        <h3 data-i18n="settings"></h3>
+        <div class="settings">
+          <label class="switch-row"><span data-i18n="sVoice"></span><input type="checkbox" id="sVoice" /></label>
+          <label class="switch-row"><span data-i18n="sAutoLoad"></span><input type="checkbox" id="sAutoLoad" /></label>
+          <label class="switch-row"><span data-i18n="sNeedle"></span><input type="checkbox" id="sNeedle" /></label>
+          <label class="switch-row"><span data-i18n="sBarge"></span><input type="checkbox" id="sBarge" /></label>
+          <label class="switch-row"><span data-i18n="sWasm"></span><input type="checkbox" id="sWasm" /></label>
+          <div class="bench-row">
+            <button id="benchBtn" class="btn small ghost" type="button" data-i18n="bench"></button>
+            <span id="benchOut" class="muted"></span>
+          </div>
+          <label class="range-row"><span data-i18n="sSpeed"></span><input type="range" id="sSpeed" min="110" max="230" step="5" /><output id="sSpeedOut"></output></label>
+          <label class="range-row"><span data-i18n="sPitch"></span><input type="range" id="sPitch" min="10" max="90" step="5" /><output id="sPitchOut"></output></label>
+          <label class="select-row"><span data-i18n="sVoiceLang"></span>
+            <select id="sVoiceLang"><option value="auto" data-i18n="auto"></option><option value="el">Ελληνικά</option><option value="en">English</option></select>
+          </label>
+          <label class="select-row"><span data-i18n="sStt"></span>
+            <select id="sStt"><option value="en">English</option><option value="auto" data-i18n="auto"></option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option><option value="it">Italiano</option><option value="nl">Nederlands</option><option value="pl">Polski</option></select>
+          </label>
+        </div>
+
+        <div class="section-head">
+          <h3 data-i18n="notes"></h3>
+          <button id="clearNotesBtn" class="btn small ghost" type="button" data-i18n="clearNotes"></button>
+        </div>
+        <ul id="notesList" class="notes"></ul>
+
+        <div id="timersWrap" hidden>
+          <h3 data-i18n="timers"></h3>
+          <ul id="timersList" class="notes"></ul>
+        </div>
+
+        <div class="drawer-actions">
+          <button id="clearChatBtn" class="btn small ghost" type="button" data-i18n="clearChat"></button>
+          <button id="exportBtn" class="btn small ghost" type="button" data-i18n="export"></button>
+        </div>
+        <p class="muted small" data-i18n="privacy"></p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Call overlay -->
+  <div id="callView" class="call-view" hidden>
+    <div class="call-top">
+      <div class="call-title" data-i18n="callTitle"></div>
+      <div id="callTimer" class="call-timer">00:00</div>
+    </div>
+    <div class="call-center">
+      <div id="callOrb" class="orb"><span></span></div>
+      <div id="callState" class="call-state"></div>
+      <div id="callLog" class="call-log"></div>
+    </div>
+    <div id="callMetrics" class="call-metrics"></div>
+    <p class="call-hint" data-i18n="callHint"></p>
+    <div class="call-controls">
+      <button id="muteBtn" class="round-btn" type="button" data-i18n-title="mute">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+      </button>
+      <button id="hangupBtn" class="round-btn danger" type="button" data-i18n-title="hangup">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 13.3a16 16 0 0 0 3.4 2.6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Camera dialog -->
+  <div id="camView" class="cam-view" hidden>
+    <div class="cam-card">
+      <h2 data-i18n="camTitle"></h2>
+      <div class="cam-frame"><video id="camVideo" playsinline muted></video><p id="camNone" class="muted" data-i18n="camNone" hidden></p></div>
+      <div class="cam-actions">
+        <button id="camCancel" class="btn ghost" type="button" data-i18n="camCancel"></button>
+        <label class="btn ghost"><span data-i18n="camFile"></span><input id="camFile" type="file" accept="image/*" hidden /></label>
+        <button id="camShoot" class="btn" type="button" data-i18n="camShoot"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

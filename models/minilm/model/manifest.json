@@ -1,0 +1,2130 @@
+{
+ "config": {
+  "hidden": 384,
+  "inter": 1536,
+  "layers": 12,
+  "heads": 12,
+  "headDim": 32,
+  "vocab": 250037,
+  "maxPos": 512,
+  "eps": 9.999999960041972e-13,
+  "alpha": 0.1767766922712326
+ },
+ "embed": {
+  "word": {
+   "files": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "rowsPerFile": 40000,
+   "scale": 0.005112001672387123,
+   "zp": 128
+  },
+  "position": {
+   "data": {
+    "file": 7,
+    "offset": 0,
+    "length": 196608
+   },
+   "scale": 0.005326865706592798,
+   "zp": 127
+  },
+  "tokenType": {
+   "data": {
+    "file": 7,
+    "offset": 196608,
+    "length": 768
+   },
+   "scale": 0.00027170218527317047,
+   "zp": 128
+  },
+  "lnW": {
+   "file": 7,
+   "offset": 197376,
+   "length": 384
+  },
+  "lnB": {
+   "file": 7,
+   "offset": 198912,
+   "length": 384
+  }
+ },
+ "layers": [
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 200448,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 347904,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 349440,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 349824,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 351360,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 498816,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 500352,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 500736,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 502272,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 649728,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 651264,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 651648,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 653184,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 800640,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 802176,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 802560,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 804096,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 805632,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 807168,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 1396992,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 1403136,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 1404672,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 1410816,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 2000640,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 2002176,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 2002560,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 2004096,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 2005632,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 2007168,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 2154624,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 2156160,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 2156544,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 2158080,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 2305536,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 2307072,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 2307456,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 2308992,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 2456448,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 2457984,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 2458368,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 2459904,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 2607360,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 2608896,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 2609280,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 2610816,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 2612352,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 2613888,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 3203712,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 3209856,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 3211392,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 3217536,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 3807360,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 3808896,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 3809280,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 3810816,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 3812352,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 3813888,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 3961344,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 3962880,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 3963264,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 3964800,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 4112256,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 4113792,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 4114176,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 4115712,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 4263168,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 4264704,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 4265088,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 4266624,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 4414080,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 4415616,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 4416000,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 4417536,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 4419072,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 4420608,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 5010432,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 5016576,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 5018112,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 5024256,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 5614080,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 5615616,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 5616000,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 5617536,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 5619072,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 5620608,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 5768064,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 5769600,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 5769984,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 5771520,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 5918976,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 5920512,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 5920896,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 5922432,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 6069888,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 6071424,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 6071808,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 6073344,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 6220800,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 6222336,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 6222720,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 6224256,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 6225792,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 6227328,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 6817152,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 6823296,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 6824832,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 6830976,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 7420800,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 7422336,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 7422720,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 7424256,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 7425792,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 7427328,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 7574784,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 7576320,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 7576704,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 7578240,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 7725696,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 7727232,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 7727616,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 7729152,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 7876608,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 7878144,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 7878528,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 7880064,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 8027520,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 8029056,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 8029440,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 8030976,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 8032512,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 8034048,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 8623872,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 8630016,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 8631552,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 8637696,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 9227520,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 9229056,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 9229440,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 9230976,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 9232512,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 9234048,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 9381504,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 9383040,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 9383424,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 9384960,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 9532416,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 9533952,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 9534336,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 9535872,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 9683328,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 9684864,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 9685248,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 9686784,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 9834240,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 9835776,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 9836160,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 9837696,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 9839232,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 9840768,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 10430592,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 10436736,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 10438272,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 10444416,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 11034240,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 11035776,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 11036160,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 11037696,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 11039232,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 11040768,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 11188224,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 11189760,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 11190144,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 11191680,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 11339136,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 11340672,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 11341056,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 11342592,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 11490048,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 11491584,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 11491968,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 11493504,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 11640960,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 11642496,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 11642880,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 11644416,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 11645952,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 11647488,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 12237312,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 12243456,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 12244992,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 12251136,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 12840960,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 12842496,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 12842880,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 12844416,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 12845952,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 12847488,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 12994944,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 12996480,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 12996864,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 12998400,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 13145856,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 13147392,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 13147776,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 13149312,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 13296768,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 13298304,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 13298688,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 13300224,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 13447680,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 13449216,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 13449600,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 13451136,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 13452672,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 13454208,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 14044032,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 14050176,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 14051712,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 14057856,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 14647680,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 14649216,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 14649600,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 14651136,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 14652672,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 14654208,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 14801664,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 14803200,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 14803584,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 14805120,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 14952576,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 14954112,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 14954496,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 14956032,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 15103488,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 15105024,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 15105408,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 15106944,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 15254400,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 15255936,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 15256320,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 7,
+    "offset": 15257856,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 7,
+    "offset": 15259392,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 7,
+     "offset": 15260928,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 15850752,
+     "length": 1536
+    },
+    "zp": {
+     "file": 7,
+     "offset": 15856896,
+     "length": 1536
+    },
+    "bias": {
+     "file": 7,
+     "offset": 15858432,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 15864576,
+     "length": 589824
+    },
+    "scale": {
+     "file": 7,
+     "offset": 16454400,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 16455936,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 16456320,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 7,
+    "offset": 16457856,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 7,
+    "offset": 16459392,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 16460928,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 16608384,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 16609920,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 16610304,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 7,
+     "offset": 16611840,
+     "length": 147456
+    },
+    "scale": {
+     "file": 7,
+     "offset": 16759296,
+     "length": 384
+    },
+    "zp": {
+     "file": 7,
+     "offset": 16760832,
+     "length": 384
+    },
+    "bias": {
+     "file": 7,
+     "offset": 16761216,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 0,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 147456,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 148992,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 149376,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 150912,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 298368,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 299904,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 300288,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 8,
+    "offset": 301824,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 8,
+    "offset": 303360,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 8,
+     "offset": 304896,
+     "length": 589824
+    },
+    "scale": {
+     "file": 8,
+     "offset": 894720,
+     "length": 1536
+    },
+    "zp": {
+     "file": 8,
+     "offset": 900864,
+     "length": 1536
+    },
+    "bias": {
+     "file": 8,
+     "offset": 902400,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 908544,
+     "length": 589824
+    },
+    "scale": {
+     "file": 8,
+     "offset": 1498368,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 1499904,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 1500288,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 8,
+    "offset": 1501824,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 8,
+    "offset": 1503360,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 1504896,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 1652352,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 1653888,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 1654272,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 1655808,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 1803264,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 1804800,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 1805184,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 1806720,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 1954176,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 1955712,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 1956096,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 1957632,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 2105088,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 2106624,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 2107008,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 8,
+    "offset": 2108544,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 8,
+    "offset": 2110080,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 8,
+     "offset": 2111616,
+     "length": 589824
+    },
+    "scale": {
+     "file": 8,
+     "offset": 2701440,
+     "length": 1536
+    },
+    "zp": {
+     "file": 8,
+     "offset": 2707584,
+     "length": 1536
+    },
+    "bias": {
+     "file": 8,
+     "offset": 2709120,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 2715264,
+     "length": 589824
+    },
+    "scale": {
+     "file": 8,
+     "offset": 3305088,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 3306624,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 3307008,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 8,
+    "offset": 3308544,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 8,
+    "offset": 3310080,
+    "length": 384
+   }
+  },
+  {
+   "q": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 3311616,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 3459072,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 3460608,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 3460992,
+     "length": 384
+    }
+   },
+   "k": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 3462528,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 3609984,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 3611520,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 3611904,
+     "length": 384
+    }
+   },
+   "v": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 3613440,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 3760896,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 3762432,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 3762816,
+     "length": 384
+    }
+   },
+   "o": {
+    "k": 384,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 3764352,
+     "length": 147456
+    },
+    "scale": {
+     "file": 8,
+     "offset": 3911808,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 3913344,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 3913728,
+     "length": 384
+    }
+   },
+   "ln1W": {
+    "file": 8,
+    "offset": 3915264,
+    "length": 384
+   },
+   "ln1B": {
+    "file": 8,
+    "offset": 3916800,
+    "length": 384
+   },
+   "inter": {
+    "k": 384,
+    "n": 1536,
+    "w": {
+     "file": 8,
+     "offset": 3918336,
+     "length": 589824
+    },
+    "scale": {
+     "file": 8,
+     "offset": 4508160,
+     "length": 1536
+    },
+    "zp": {
+     "file": 8,
+     "offset": 4514304,
+     "length": 1536
+    },
+    "bias": {
+     "file": 8,
+     "offset": 4515840,
+     "length": 1536
+    }
+   },
+   "out": {
+    "k": 1536,
+    "n": 384,
+    "w": {
+     "file": 8,
+     "offset": 4521984,
+     "length": 589824
+    },
+    "scale": {
+     "file": 8,
+     "offset": 5111808,
+     "length": 384
+    },
+    "zp": {
+     "file": 8,
+     "offset": 5113344,
+     "length": 384
+    },
+    "bias": {
+     "file": 8,
+     "offset": 5113728,
+     "length": 384
+    }
+   },
+   "ln2W": {
+    "file": 8,
+    "offset": 5115264,
+    "length": 384
+   },
+   "ln2B": {
+    "file": 8,
+    "offset": 5116800,
+    "length": 384
+   }
+  }
+ ],
+ "files": [
+  {
+   "name": "model-00.bin",
+   "bytes": 15360000
+  },
+  {
+   "name": "model-01.bin",
+   "bytes": 15360000
+  },
+  {
+   "name": "model-02.bin",
+   "bytes": 15360000
+  },
+  {
+   "name": "model-03.bin",
+   "bytes": 15360000
+  },
+  {
+   "name": "model-04.bin",
+   "bytes": 15360000
+  },
+  {
+   "name": "model-05.bin",
+   "bytes": 15360000
+  },
+  {
+   "name": "model-06.bin",
+   "bytes": 3854208
+  },
+  {
+   "name": "model-07.bin",
+   "bytes": 16762752
+  },
+  {
+   "name": "model-08.bin",
+   "bytes": 5118336
+  }
+ ],
+ "tokenizer": {
+  "vocabSize": 250002,
+  "unkId": 3,
+  "added": [
+   {
+    "id": 0,
+    "content": "<s>",
+    "lstrip": false,
+    "rstrip": false
+   },
+   {
+    "id": 1,
+    "content": "<pad>",
+    "lstrip": false,
+    "rstrip": false
+   },
+   {
+    "id": 2,
+    "content": "</s>",
+    "lstrip": false,
+    "rstrip": false
+   },
+   {
+    "id": 3,
+    "content": "<unk>",
+    "lstrip": false,
+    "rstrip": false
+   },
+   {
+    "id": 250001,
+    "content": "<mask>",
+    "lstrip": true,
+    "rstrip": false
+   }
+  ],
+  "bos": 0,
+  "eos": 2,
+  "pad": 1,
+  "maxLength": 512,
+  "replacement": "\u2581"
+ }
+}

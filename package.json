@@ -1,0 +1,12 @@
+{
+  "name": "zagreus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ζαγρεύς — a voice assistant that runs entirely in the browser (Whistle, MiniLM, Needle 2, SmolLM2, MobileCLIP, meSpeak, WebAssembly SIMD).",
+  "scripts": {
+    "start": "node serve.js",
+    "lan": "node serve.js --lan",
+    "test": "node tools/test_brain.mjs && node tools/test_whistle_wasm.js && node tools/test_minilm_wasm.js && node tools/test_smollm_wasm.js",
+    "build:wasm": "sh wasm-src/build.sh"
+  }
+}

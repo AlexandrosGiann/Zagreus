@@ -1,0 +1,25 @@
+// Unit checks for the brain's exact parsers (no models needed).
+import { evaluate, mathExpression, parseDuration, wikiTopic, anchorLabel, fold, replyLang } from '../js/brain.js';
+const eq = (a, b, m) => { const ok = JSON.stringify(a) === JSON.stringify(b); console.log((ok ? ' ok ' : ' XX ') + m + ' -> ' + JSON.stringify(a)); if (!ok) process.exitCode = 1; };
+const calc = (t) => { const e = mathExpression(t); return e === null ? null : evaluate(e); };
+eq(calc('πόσο κάνει 2 συν 3 επί 4;'), 14, 'el arithmetic');
+eq(calc('what is 12 divided by 4 plus 1'), 4, 'en arithmetic');
+eq(calc('(2+3)*4'), 20, 'parens');
+eq(calc('2^10'), 1024, 'power');
+eq(calc('-3 + 5'), 2, 'unary minus');
+eq(calc('20% of 50'), 10, 'percent');
+eq(calc('6 x 7'), 42, 'x as times');
+eq(calc('τι είναι η φωτοσύνθεση;'), null, 'no math in question');
+eq(calc('six times seven'), 42, 'number words');
+eq(calc('δύο επί τρία'), 6, 'greek number words');
+eq(parseDuration('βάλε χρονόμετρο 5 λεπτά'), { seconds: 300, label: '' }, 'el timer');
+eq(parseDuration('set a timer for 1 hour and 30 seconds'), { seconds: 3630, label: '' }, 'en timer');
+eq(parseDuration('υπενθύμισέ μου σε δέκα λεπτά να πάρω τηλέφωνο'), { seconds: 600, label: 'πάρω τηλέφωνο' }, 'el reminder');
+eq(parseDuration('τι ώρα είναι'), null, 'no timer');
+eq(wikiTopic('Τι είναι η φωτοσύνθεση;'), 'φωτοσύνθεση', 'wiki topic el');
+eq(wikiTopic('Who was Alexander the Great?'), 'Alexander the Great', 'wiki topic en');
+eq(anchorLabel('display', 'βάλε φωτεινό θέμα'), 'theme_light', 'display el light');
+eq(anchorLabel('call', 'κλείσε την κλήση'), 'call_end', 'call end el');
+eq(anchorLabel('voice', 'μίλα ελληνικά'), 'lang_el', 'voice lang');
+eq(replyLang('Γεια', 'en'), 'el', 'reply lang');
+eq(fold('Καιρός'), 'καιροσ', 'fold');
