@@ -50,8 +50,8 @@ Wi‑Fi με απομόνωση πελατών). Το `.cert/` περιέχει 
 Τα μοντέλα τρέχουν στη συσκευή που ανοίγει τη σελίδα, όχι στον server. Ένα κινητό χρειάζεται αρκετή μνήμη
 για τα μοντέλα που φορτώνει.
 
-Την πρώτη φορά κατεβαίνουν περίπου 350 MB μοντέλων. Τα βασικά μοντέλα (MiniLM, meSpeak, Whistle, Needle 2)
-φορτώνουν αυτόματα. Το SmolLM2 και το MobileCLIP φορτώνουν την πρώτη φορά που χρειάζονται, ή από το πάνελ
+Την πρώτη φορά κατεβαίνουν περίπου 310 MB μοντέλων. Τα βασικά μοντέλα (MiniLM, meSpeak, Whistle, Needle 2)
+φορτώνουν αυτόματα. Το SmolLM2 και το Orasis-2 φορτώνουν την πρώτη φορά που χρειάζονται, ή από το πάνελ
 «Μοντέλα».
 
 ## Τα μοντέλα
@@ -62,7 +62,7 @@ Wi‑Fi με απομόνωση πελατών). Το `.cert/` περιέχει 
 | Κατανόηση, πρόθεση, σημασιολογική μνήμη | paraphrase-multilingual-MiniLM-L12-v2 | paraphrase-multilingual-MiniLM-L12-v2_PureJS |
 | Εντολές εφαρμογής (tool calls) | Needle 2 | Needle2_PureJS_release |
 | Ελεύθερη συζήτηση (αγγλικά) | SmolLM2-135M-Instruct | SmolLM2_135MInstruct-PureJS |
-| Όραση | MobileCLIP-S0 | mobileclip-s0-purejs-oldandroid |
+| Όραση | Orasis-2 (MobileNetV4 Small, αποσταγμένο από OpenCLIP ViT-B-16) | zagreus-orasis |
 | Φωνή (κείμενο → ομιλία) | meSpeak.js 1.9.6 (eSpeak), φωνές `el` και `en-us` | npm `mespeak` |
 
 Κάθε μοντέλο τρέχει σε δικό του Web Worker, οπότε η σελίδα δεν παγώνει.
@@ -80,8 +80,9 @@ Wi‑Fi με απομόνωση πελατών). Το `.cert/` περιέχει 
   «πού είναι το κλειδί;». Οι σημειώσεις μένουν στο `localStorage` μαζί με τα embeddings τους.
 - **Εντολές**: θέμα, φωνή, γλώσσα, κλήση, κάμερα, καθαρισμός συζήτησης. Στα αγγλικά αποφασίζει το Needle 2
   μέσα σε μικρό προφίλ εργαλείων. Στα ελληνικά, ή αν το Needle δεν διαλέξει εργαλείο, αποφασίζει το MiniLM.
-- **Όραση**: φωτογραφία από την κάμερα, από αρχείο ή με drag & drop. Το MobileCLIP δίνει τις πιθανότερες
-  ετικέτες (στα αγγλικά).
+- **Όραση**: φωτογραφία από την κάμερα, από αρχείο ή με drag & drop. Το Orasis-2 συγκρίνει την εικόνα με
+  1.253 λέξεις και δίνει τις πιθανότερες ετικέτες (στα αγγλικά). Τρέχει σε WebAssembly SIMD (~100 ms) ή σε
+  JavaScript.
 - **Υπαγόρευση** με το Whistle (κουμπί μικροφώνου).
 - **Φωνητικές απαντήσεις** με meSpeak. Η φωνή επιλέγεται αυτόματα (ελληνική ή αγγλική) και η ταχύτητα και ο
   τόνος ρυθμίζονται.
@@ -151,6 +152,7 @@ js/dsp.js                      φόρτωση WASM και εναλλακτικά
 js/models.js                   clients για τους workers των μοντέλων
 js/needle-tools.js             προφίλ εργαλείων του Needle 2
 models/<μοντέλο>/              τα runtimes από τα 5 repositories + οι προσθήκες *-wasm.js / needle-*.js
+models/orasis/orasis-worker.js ο worker της όρασης (encoder, text map, τράπεζα λέξεων)
 vendor/mespeak/                meSpeak.js (GPL) + mespeak-worker.js
 wasm/                          zagreus-simd.wasm, zagreus-base.wasm (χτισμένα)
 wasm-src/                      ο κώδικας Rust των kernels και το build.sh
@@ -184,7 +186,13 @@ node tools/test_needle.js
 node tools/test_brain.mjs
 ```
 
+```bash
+node tools/test_orasis.js
+```
+
 Τα τρία πρώτα συγκρίνουν JS και WASM και πρέπει να τυπώσουν `bit-identical: true` / `token-identical: true`.
+Το `test_orasis.js` ελέγχει τον encoder του Orasis-2 σε JS, WASM και WASM SIMD απέναντι στο διάνυσμα αναφοράς
+του repository.
 
 ## Ξαναχτίσιμο του WebAssembly
 
@@ -198,3 +206,7 @@ sh wasm-src/build.sh
 
 Τα μοντέλα και τα runtimes έχουν τις άδειες των repositories τους (δες τα `LICENSE` στους φακέλους
 `models/`). Το meSpeak.js και το eSpeak είναι GPL.
+
+Το Orasis-2 ξεκινά από το MobileNetV4 Small του timm (Apache 2.0), που εκπαιδεύτηκε στο ImageNet-1k. Οι όροι
+του ImageNet περιορίζουν τα δεδομένα σε μη εμπορική έρευνα. Δες το `models/orasis/NOTICE.txt` πριν από
+εμπορική χρήση.

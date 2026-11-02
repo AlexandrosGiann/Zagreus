@@ -66,7 +66,7 @@ function status(msg) { const el = $('statusLine'); el.textContent = msg || ''; e
 
 // ---------------------------------------------------------------- model panel
 
-const ORDER = ['minilm', 'tts', 'whistle', 'needle', 'smollm', 'clip'];
+const ORDER = ['minilm', 'tts', 'whistle', 'needle', 'smollm', 'vision'];
 const CORE = ['minilm', 'tts', 'whistle', 'needle'];
 
 function renderModels() {
@@ -322,13 +322,13 @@ async function toggleMic() {
   }
 }
 
-// ---------------------------------------------------------------- camera + vision (MobileCLIP)
+// ---------------------------------------------------------------- camera + vision (Orasis-2)
 
 let camStream = null;
 async function openCamera() {
   $('camView').hidden = false;
   $('camNone').hidden = true;
-  models.clip.load().catch(() => {});
+  models.vision.load().catch(() => {});
   try {
     camStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 720 }, height: { ideal: 720 } } });
     const v = $('camVideo'); v.srcObject = camStream; await v.play();
@@ -360,7 +360,7 @@ async function describeImage(imgSource, url) {
   status(T.looking);
   const t0 = performance.now();
   try {
-    const res = await models.clip.classify(imgSource, (p) => status(`${T.looking} ${Math.round(p * 100)}%`));
+    const res = await models.vision.classify(imgSource, (p) => status(`${T.looking} ${Math.round(p * 100)}%`));
     status('');
     // turn the cosine scores of the top labels into a softmax distribution (CLIP logit scale 100)
     const top = res.top.slice(0, 5);
@@ -370,12 +370,12 @@ async function describeImage(imgSource, url) {
     let text = R.imageSee(dist[0].label);
     const others = dist.slice(1, 3).filter((d) => d.p > 0.08).map((d) => d.label);
     if (others.length) text += ' ' + R.imageMaybe(others.join(', '));
-    const out = { text, lang, source: 'MobileCLIP-S0', cards: [{ type: 'labels', top: dist }], ms: Math.round(performance.now() - t0) };
+    const out = { text, lang, source: 'Orasis-2', cards: [{ type: 'labels', top: dist }], ms: Math.round(performance.now() - t0) };
     fillBot(el, out);
     if (S.voice) speaker.say(text, langOf(out));
   } catch (e) {
     status('');
-    fillBot(el, { text: String(e.message || e), source: 'MobileCLIP-S0', lang });
+    fillBot(el, { text: String(e.message || e), source: 'Orasis-2', lang });
   }
 }
 

@@ -7,3 +7,9 @@
 *.wav binary
 *.jpg binary
 *.png binary
+*.pdf binary
+*.ors binary
+*.orh binary
+*.f16 binary
+*.u8 binary
+*.webp binary

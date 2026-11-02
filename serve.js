@@ -178,7 +178,7 @@ function handler(req, res) {
 
 function checkFiles() {
   ['index.html', 'js/app.js', 'wasm/zagreus-simd.wasm', 'models/whistle/whistle.cact', 'models/needle/needle2.cact',
-    'models/smollm/model/manifest.json', 'models/minilm/model/manifest.json', 'models/mobileclip/compiled-fp32-v1/plan.json',
+    'models/smollm/model/manifest.json', 'models/minilm/model/manifest.json', 'models/orasis/encoder.ors',
     'vendor/mespeak/mespeak_config.json'].forEach(function (f) {
     if (!fs.existsSync(path.join(root, f))) console.log('WARNING: ' + f + ' is missing from ' + root);
   });

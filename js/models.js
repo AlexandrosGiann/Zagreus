@@ -281,55 +281,54 @@ export function loadToolSpec() {
   return toolSpecPromise;
 }
 
-// ---------------------------------------------------------------- MobileCLIP (vision)
+// ---------------------------------------------------------------- Orasis-2 (vision)
 
-export class MobileClip extends ModelClient {
-  constructor() { super('clip', 'MobileCLIP-S0 (vision)', 48); }
+export class Orasis extends ModelClient {
+  constructor() { super('vision', 'Orasis-2 (vision)', 8); }
   _load() {
     return new Promise((resolve, reject) => {
-      this.worker = new Worker('models/mobileclip/browser-fp32-opt-v2-worker-bundle.js');
+      this.worker = new Worker('models/orasis/orasis-worker.js');
       this.worker.onmessage = (e) => {
         const d = e.data, cur = this.current;
         if (d.type === 'load-progress') this.set({ progress: (d.percent || 0) / 100, detail: d.phase || '' });
-        else if (d.type === 'ready') { this.set({ detail: `${d.labels} labels` }); resolve(); }
-        else if (d.type === 'infer-progress' && cur) cur.onProgress && cur.onProgress(d.percent / 100);
+        else if (d.type === 'ready') { this.kernel = d.kernel; this.set({ detail: `${d.labels} labels · ${d.kernel}` }); resolve(); }
         else if (d.type === 'result' && cur) { this.current = null; cur.resolve(d); }
         else if (d.type === 'error') {
           if (cur) { this.current = null; cur.reject(new Error(d.text)); }
           else reject(new Error(d.text));
         }
       };
-      this.worker.onerror = (e) => reject(new Error(e.message || 'MobileCLIP worker failed'));
+      this.worker.onerror = (e) => reject(new Error(e.message || 'Orasis worker failed'));
+      this.worker.postMessage({ type: 'load', wasm: wantModelWasm });
     });
   }
-  // image: anything drawImage accepts. Resolves with { top: [{label, score}], inferenceMs }.
+  // image: anything drawImage accepts. Resolves with { top: [{label, score}], inferenceMs, kernel }.
   async classify(image, onProgress) {
     await this.load();
     if (this.current) throw new Error('busy');
-    const input = imageToTensor(image);
+    const px = imageToRgb(image);
     return new Promise((resolve, reject) => {
       this.current = { resolve, reject, onProgress };
-      this.worker.postMessage({ type: 'run', inputBuffer: input.buffer }, [input.buffer]);
+      this.worker.postMessage({ type: 'run', rgb: px.rgb.buffer, w: px.w, h: px.h, k: 10 }, [px.rgb.buffer]);
     });
   }
 }
 
-// Centre square crop, 256x256, RGB / 255, NCHW float32, no mean/std (as the MobileCLIP runtime expects).
-function imageToTensor(img) {
+// Interleaved RGB bytes of the whole image, its short side reduced to at most 512 pixels.
+// The worker then does the runtime's own antialiased resize to 256 and centre crop to 224.
+function imageToRgb(img) {
   const w = img.naturalWidth || img.videoWidth || img.width, h = img.naturalHeight || img.videoHeight || img.height;
-  const side = Math.min(w, h), sx = (w - side) / 2, sy = (h - side) / 2;
+  const r = Math.min(1, 512 / Math.min(w, h));
+  const cw = Math.max(1, Math.round(w * r)), ch = Math.max(1, Math.round(h * r));
   const c = document.createElement('canvas');
-  c.width = c.height = 256;
-  const ctx = c.getContext('2d');
-  ctx.drawImage(img, sx, sy, side, side, 0, 0, 256, 256);
-  const px = ctx.getImageData(0, 0, 256, 256).data, plane = 256 * 256;
-  const out = new Float32Array(3 * plane);
-  for (let i = 0; i < plane; i++) {
-    out[i] = px[i * 4] / 255;
-    out[plane + i] = px[i * 4 + 1] / 255;
-    out[2 * plane + i] = px[i * 4 + 2] / 255;
-  }
-  return out;
+  c.width = cw; c.height = ch;
+  const ctx = c.getContext('2d', { willReadFrequently: true });
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, cw, ch);
+  const px = ctx.getImageData(0, 0, cw, ch).data;
+  const rgb = new Uint8Array(cw * ch * 3);
+  for (let i = 0, j = 0; i < px.length; i += 4) { rgb[j++] = px[i]; rgb[j++] = px[i + 1]; rgb[j++] = px[i + 2]; }
+  return { rgb, w: cw, h: ch };
 }
 
 // ---------------------------------------------------------------- meSpeak (text to speech)
@@ -361,6 +360,6 @@ export const models = {
   whistle: new WhistleSTT(),
   needle: new Needle(),
   smollm: new SmolLM(),
-  clip: new MobileClip(),
+  vision: new Orasis(),
   tts: new MeSpeak()
 };
